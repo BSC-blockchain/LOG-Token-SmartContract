@@ -649,9 +649,9 @@ contract LogToken is BEP20Detailed, BEP20 {
 
     uint256 private totalTokens;
     
-    constructor() public BEP20Detailed("Log token", "LOG", 18) {  
+    constructor() public BEP20Detailed("Metarrior", "MEWA", 18) {  
 
-        totalTokens = 2100000000 * 10 ** uint256(decimals());
+        totalTokens = 20000000000 * 10 ** uint256(decimals());
         _mint(owner(), totalTokens);
     }
 
@@ -659,19 +659,19 @@ contract LogToken is BEP20Detailed, BEP20 {
         return totalTokens;
     }
 
-    function transfer(address _receiver, uint256 _amount) public returns (bool success) {
-        require(_receiver != address(0)); 
+    // function transfer(address _receiver, uint256 _amount) public returns (bool success) {
+    //     require(_receiver != address(0)); 
 
-        return BEP20.transfer(_receiver, _amount);
-    }
+    //     return BEP20.transfer(_receiver, _amount);
+    // }
 
-    function transferFrom(address _from, address _receiver, uint256 _amount) public returns (bool) {
-        require(_from != address(0));
-        require(_receiver != address(0));
-        require(_amount <= allowance(_from, msg.sender));
+    // function transferFrom(address _from, address _receiver, uint256 _amount) public returns (bool) {
+    //     require(_from != address(0));
+    //     require(_receiver != address(0));
+    //     // require(_amount <= allowance(_from, msg.sender));
 
-        return BEP20.transferFrom(_from, _receiver, _amount);
-    }
+    //     return BEP20.transferFrom(_from, _receiver, _amount);
+    // }
 
     function getBurnedAmountTotal() public view returns (uint256 _amount) {
         return totalTokens.sub(totalSupply());
@@ -680,7 +680,7 @@ contract LogToken is BEP20Detailed, BEP20 {
     function burn(uint256 _amount) public {
         _burn(msg.sender, _amount);
     }
-
+    
     function () payable external {   
         revert();
     }
